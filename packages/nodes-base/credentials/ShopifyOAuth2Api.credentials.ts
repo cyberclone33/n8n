@@ -81,5 +81,11 @@ export class ShopifyOAuth2Api implements ICredentialType {
 			type: 'hidden',
 			default: 'body',
 		},
+		{
+			displayName: 'Redirect URL',
+			name: 'redirectUrl',
+			type: 'hidden',
+			default: 'https://shopify-collection-sorter.onrender.com/rest/oauth2-credential/callback',
+		},
 	];
 }
