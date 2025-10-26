@@ -26,7 +26,8 @@ RUN set -eux; \
 
 # ****** NEW SECTION: Install extra libraries for Code nodes ******
 # These libraries (axios, lodash, moment) will be globally available.
-RUN npm install -g axios lodash moment
+# Also install Claude Code community node
+RUN npm install -g axios lodash moment @johnlindquist/n8n-nodes-claudecode
 
 # Set NODE_PATH so that global modules are available in Code nodes
 ENV NODE_PATH=/usr/local/lib/node_modules
