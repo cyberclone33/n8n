@@ -10,6 +10,7 @@ fi
 # If auth files exist in /data, symlink them to node user's home
 if [ -d /data/.claude ]; then
   echo "Claude Code auth found in /data, linking to home directory"
+  rm -rf /home/node/.claude /home/node/.claude.json /home/node/.claude.json.backup
   ln -sf /data/.claude /home/node/.claude
   ln -sf /data/.claude.json /home/node/.claude.json
 fi
