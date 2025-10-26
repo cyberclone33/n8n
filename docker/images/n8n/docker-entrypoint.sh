@@ -6,6 +6,15 @@ if [ -d /opt/custom-certificates ]; then
   c_rehash /opt/custom-certificates
 fi
 
+# Configure Claude Code to use persistent storage in /data
+export ANTHROPIC_HOME=/data/.anthropic
+mkdir -p $ANTHROPIC_HOME
+
+# If ANTHROPIC_API_KEY is set, configure Claude Code to use it
+if [ -n "$ANTHROPIC_API_KEY" ]; then
+  echo "ANTHROPIC_API_KEY detected, Claude Code will use API key authentication"
+fi
+
 if [ "$#" -gt 0 ]; then
   # Got started with arguments
   exec n8n "$@"
