@@ -7,6 +7,14 @@ if [ -d /opt/custom-certificates ]; then
 fi
 
 # Configure Claude Code to use persistent storage in /data
+# If auth files exist in /data, symlink them to node user's home
+if [ -d /data/.claude ]; then
+  echo "Claude Code auth found in /data, linking to home directory"
+  ln -sf /data/.claude /home/node/.claude
+  ln -sf /data/.claude.json /home/node/.claude.json
+fi
+
+# Set ANTHROPIC_HOME for future auth
 export ANTHROPIC_HOME=/data/.anthropic
 mkdir -p $ANTHROPIC_HOME
 
